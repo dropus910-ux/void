@@ -1,0 +1,41 @@
+VOID - THIRD-PARTY NOTICES
+
+VOID is built with the open-source software below. Each project belongs
+to its authors and is used under the license shown. Full license texts
+are available from each project's website and in its source package.
+
+Application framework
+- Tauri (tauri, tauri-build, tauri-runtime and related crates)
+  Licensed under MIT or Apache-2.0.   https://tauri.app
+- tauri-plugin-dialog
+  Licensed under MIT or Apache-2.0.   https://github.com/tauri-apps
+
+Rust libraries
+- serde, serde_json     MIT or Apache-2.0
+- reqwest               MIT or Apache-2.0
+- zip                   MIT
+- Many smaller Rust crates that these depend on, almost all under MIT,
+  Apache-2.0 or similar permissive licenses. The exact list is in the
+  project's Cargo.lock file.
+
+Windows components
+- Microsoft Edge WebView2 Runtime is used to display VOID's window. It is
+  provided by Microsoft under its own license terms.
+
+Fonts
+- VOID does not bundle any font files. Text is drawn with the fonts that
+  are already installed on your computer.
+
+MIT License (applies to the MIT-licensed projects above)
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of the software and associated documentation files, to deal in the
+software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the software, and to permit persons to whom the software is
+furnished to do so, subject to the following conditions: the copyright
+notice and this permission notice shall be included in all copies or
+substantial portions of the software. THE SOFTWARE IS PROVIDED "AS IS",
+WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
+
+Apache License 2.0 (applies to the Apache-2.0-licensed projects above)
+The full text is at https://www.apache.org/licenses/LICENSE-2.0

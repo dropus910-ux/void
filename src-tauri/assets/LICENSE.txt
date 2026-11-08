@@ -1,0 +1,67 @@
+VOID - END USER LICENSE AGREEMENT
+
+Please read this agreement before installing VOID. If you click "I Agree"
+you accept it. If you do not accept it, click "Cancel" and VOID will not
+be installed.
+
+1. WHAT VOID IS
+VOID is a music player for audio files that are stored on your own
+computer. VOID does not provide, sell, stream or host any music.
+
+2. PERMISSION TO USE
+You may install and use VOID on your own devices for personal use, free
+of charge. The source code of VOID is covered by the license published
+with the project's source code, which applies in addition to this
+agreement for anyone who copies or changes the code.
+
+3. YOUR MUSIC AND YOUR RESPONSIBILITY
+You may only play, import, copy, download or store music and other
+content that you own or that you have the legal right to use. Copyright
+laws are different in every country. You alone are responsible for the
+content you add to VOID and for how you obtain it. Do not use VOID to
+copy, share or distribute content without permission. VOID: do not
+pirate songs.
+
+4. OPTIONAL FEATURES THAT USE THE INTERNET
+Some optional features (for example the "Add song" window) may download
+helper tools or content from the internet when you use them. Those tools
+and sites have their own licenses and terms. You are responsible for
+following them. VOID does not send your music or your personal data to
+the authors of VOID.
+
+5. PRIVACY
+VOID has no accounts, no advertising and no tracking. Your music, your
+playlists and your settings stay on your computer. VOID keeps a log file
+at C:\VOID\Logs\void.log that may contain file names, folder paths and
+error messages. The log is never sent anywhere automatically. If you
+share it with someone (for example when asking for help), check it first.
+
+6. THIRD-PARTY SOFTWARE
+VOID includes and uses open-source software from other people. Their
+licenses are listed in C:\VOID\README\THIRD-PARTY-NOTICES.txt.
+
+7. TRADEMARKS
+VOID is an independent project. It is not made, endorsed or sponsored by
+Spotify, Apple, Google, YouTube, Microsoft or any other company. All
+product names and trademarks belong to their owners and are used only to
+describe things.
+
+8. NO WARRANTY
+VOID is provided "AS IS", without any warranty of any kind, express or
+implied, including but not limited to warranties of merchantability,
+fitness for a particular purpose and non-infringement. Use it at your
+own risk. Back up files that are important to you.
+
+9. LIMITATION OF LIABILITY
+To the fullest extent allowed by law, the authors of VOID are not liable
+for any damage, loss of data, loss of files or legal claim that comes
+from installing or using VOID, or from the content you add to it.
+
+10. ENDING THIS AGREEMENT
+This agreement ends automatically if you break it. You can end it at any
+time by uninstalling VOID and deleting its files. Sections 3, 8 and 9
+continue to apply after that.
+
+11. CHANGES
+New versions of VOID may come with an updated agreement. If you keep
+using a new version after seeing the updated agreement, you accept it.

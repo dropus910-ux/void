@@ -1,0 +1,13 @@
+# build output (created by patch.py / cargo - never upload these)
+/dist/
+/src-tauri/target/
+/src-tauri/gen/schemas/
+
+# installers and logs
+*.exe
+*.log
+
+# editor / system files
+.vscode/
+Thumbs.db
+.DS_Store
