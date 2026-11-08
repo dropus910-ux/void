@@ -1,4 +1,4 @@
-GLASSPLAYER -> Windows installer, all from the terminal
+void -> Windows installer, all from the terminal
 
 1. Put your page in this folder and name it  original.html
 2. Open PowerShell in this folder (Shift + right-click -> "Open PowerShell window here")
@@ -10,3 +10,4 @@ GLASSPLAYER -> Windows installer, all from the terminal
 4. When it finishes, the installer folder opens. Double-click Glassplayer_..._setup.exe
 
 Uses only your Windows system WebView2 - no Edge or other browser is opened.
+or use the installer easy know?
