@@ -198,6 +198,7 @@ body.lite .card.sel{background:linear-gradient(135deg,rgba(255,255,255,.3),rgba(
 body.lite::before{display:none!important}
 body.lite .bg i{filter:blur(24px) saturate(1.6) brightness(.85)!important}
 body.lite .vpop,body.lite .vtoast,body.lite .spotdl-content{background:rgba(26,16,44,.92)!important}
+body.bgmode *,body.bgmode *::before,body.bgmode *::after{animation-play-state:paused!important;transition-duration:0s!important}
 #perfBtn[aria-pressed=true]{color:#22d3ee}
 #plusBtn[aria-pressed=true],#libBtn[aria-pressed=true],#queueBtn[aria-pressed=true],#sleepBtn[aria-pressed=true]{color:#22d3ee}
 """
@@ -476,6 +477,25 @@ Object.keys(dockMenus).forEach(id=>{
 });
 document.addEventListener('pointerdown',e=>{if(vpopOwner&&!vpop.contains(e.target)&&!(e.target.closest&&e.target.closest('#plusBtn,#libBtn,#queueBtn,#sleepBtn')))popHide()},true);
 addEventListener('keydown',e=>{if(e.key==='Escape'&&vpopOwner)popHide()});
+/* background mode: while the window is minimized or hidden, stop all drawing and keep only the sound */
+let BG=false,bgMin=false,bgHid=false;
+const _raf=window.requestAnimationFrame.bind(window),_caf=window.cancelAnimationFrame.bind(window);
+const rafHeld=new Map();let rafFake=1e9;
+window.requestAnimationFrame=cb=>{if(!BG)return _raf(cb);const id=++rafFake;rafHeld.set(id,cb);return id};
+window.cancelAnimationFrame=id=>{if(rafHeld.has(id))rafHeld.delete(id);else _caf(id)};
+const _tu=A.ontimeupdate;
+A.ontimeupdate=function(e){if(BG)return;return _tu&&_tu.call(this,e)};
+function setBg(){
+  const on=bgMin||bgHid;if(on===BG)return;
+  BG=on;document.body.classList.toggle('bgmode',on);
+  if(on)return;
+  /* back on screen: restart every animation loop and redraw everything right away */
+  const held=[...rafHeld.values()];rafHeld.clear();held.forEach(cb=>_raf(cb));
+  try{_tu&&_tu()}catch(e){}
+  try{if(cards.length&&T.length){layout();bg();bar()}}catch(e){}
+}
+try{TAURI.event.listen('void-minimized',e=>{bgMin=!!e.payload;setBg()}).catch(()=>{})}catch(e){}
+document.addEventListener('visibilitychange',()=>{bgHid=document.hidden;setBg()});
 /* errors and notable events are written to C:\VOID\Logs\void.log by the app */
 function logErr(ctx,e){try{invoke('log_event',{level:'ERROR',msg:ctx+': '+String((e&&(e.stack||e.message))||e)})}catch(x){}}
 addEventListener('error',e=>logErr('window',(e.message||'error')+' (line '+e.lineno+')'));

@@ -8,7 +8,7 @@ use std::{
     io::{Read, Seek, SeekFrom, Write},
     path::{Path, PathBuf},
     process::{Command, Stdio},
-    sync::OnceLock,
+    sync::{atomic::{AtomicBool, Ordering}, OnceLock},
     time::{SystemTime, UNIX_EPOCH},
 };
 use tauri::{ipc::Response, AppHandle, Emitter, Manager};
@@ -600,6 +600,7 @@ const LICENSE_TXT: &str = include_str!("../assets/LICENSE.txt");
 const NOTICES_TXT: &str = include_str!("../assets/THIRD-PARTY-NOTICES.txt");
 
 static HOME: OnceLock<PathBuf> = OnceLock::new();
+static WAS_MINIMIZED: AtomicBool = AtomicBool::new(false);
 
 fn void_home() -> &'static PathBuf {
     HOME.get_or_init(|| {
@@ -687,6 +688,15 @@ fn main() {
     log_line("INFO", "VOID started");
     tauri::Builder::default()
         .plugin(tauri_plugin_dialog::init())
+        .on_window_event(|window, event| {
+            // minimized / restored -> the page stops drawing while hidden (the sound keeps playing)
+            if let tauri::WindowEvent::Resized(_) = event {
+                let min = window.is_minimized().unwrap_or(false);
+                if WAS_MINIMIZED.swap(min, Ordering::Relaxed) != min {
+                    let _ = window.emit("void-minimized", min);
+                }
+            }
+        })
         .invoke_handler(tauri::generate_handler![
             last_folder,
             scan,
